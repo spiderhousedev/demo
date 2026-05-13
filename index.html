@@ -1,26 +1,55 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SpiderHouse Deck :: Login</title>
-        <link rel="icon" type="image/x-icon" href="#">
-        <link rel="stylesheet" href="front-end/styles/mobile.css">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranked Cards</title>
+  <link rel="stylesheet" type="text/css" href="front-end/styles/mobile.css">
+</head>
 
-    <body>
-    
-        <div id="login-section"> 
-            <div id="login-title">
-                <h1>SpiderHouse Dashboard</h1>
-                <h2>Login</h2>
-            </div>
-            <div id="login-form">
-                <p class="purple">Deck or Dashboard? no idea.</p>
-            </div>
-        </div>
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle("light");
+  }
+</script>
 
-    </body>
+<body class="light">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle theme</button>
+  <section class="panel">
+    <div class="date-row">
+      <h1>SpiderHouse :: Dashboard</h1>
+      <!-- <span class="badge">4</span> -->
+    </div>
+
+    <div class="card-list">
+      <div class="rank-card">
+        <p class="meta">Info</p>
+        <h2 class="title">25 Projects | 4 Domains</h2>
+      </div>
+    </div>
+  </section>
+  <section class="panel-side">
+    <div class="date-row">
+      <h1>Project List</h1>
+      <!-- <span class="badge">4</span> -->
+    </div>
+
+    <div class="card-list">
+      <div class="rank-card">
+        <p class="meta">HTML | CSS | JS</p>
+        <h2 class="title">DN1 Gourmet Catering</h2>
+      </div>
+      <div class="rank-card">
+        <p class="meta">HTML | CSS | JS</p>
+        <h2 class="title">Starling Aesthetics</h2>
+      </div>
+      <div class="rank-card">
+        <p class="meta">HTML | CSS | JS</p>
+        <h2 class="title">Spider House Dashboard</h2>
+      </div>
+
+      </div>
+    </div>
+  </section>
+</body>
 </html>
