@@ -18,19 +18,6 @@
   --badge-border: #6b707a;
 }
 
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-card);
-  border-radius: 12px;
-  padding: 10px 16px;
-  cursor: pointer;
-  font-weight: 700;
-}
-
 body.light {
   color-scheme: light;
 
@@ -64,10 +51,34 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: start;
-  margin-left:auto;
-  gap:25px;
+  align-items: flex-start;
+  gap: 25px;
   padding: 40px;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 700;
+  z-index: 10;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-red);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .panel {
@@ -80,7 +91,7 @@ body {
 }
 
 .panel-side {
-  width: calc(25%-48px);
+  width: calc(35% - 25px);
   background: var(--bg-main);
   border: 1px solid var(--border-main);
   border-radius: 32px;
@@ -126,10 +137,31 @@ body {
   border-radius: 20px;
   padding: 38px 68px;
   min-height: 178px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.rank-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-red);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.22);
+}
+
+.rank-card:active {
+  transform: translateY(-2px);
 }
 
 .rank-card::before {
@@ -141,6 +173,15 @@ body {
   height: 84px;
   background: var(--accent-red);
   border-radius: 0 10px 10px 0;
+
+  transition:
+    top 0.25s ease,
+    height 0.25s ease;
+}
+
+.rank-card:hover::before {
+  top: 34px;
+  height: 108px;
 }
 
 .meta {
@@ -164,20 +205,26 @@ body {
     padding: 24px;
     justify-content: flex-start;
   }
-  .panel {
+
+  .panel,
+  .panel-side {
     width: 100%;
     padding: 36px 32px;
   }
+
   .date-row h1 {
-    font-size: 44px;
+    font-size: 36px;
   }
+
   .rank-card {
     padding: 32px 48px;
   }
+
   .meta {
-    font-size: 26px;
+    font-size: 22px;
   }
+
   .title {
-    font-size: 44px;
+    font-size: 34px;
   }
 }

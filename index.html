@@ -8,17 +8,46 @@
 </head>
 
 <script>
+  // Detect system theme on first load
+  window.addEventListener("DOMContentLoaded", () => {
+
+    const savedTheme = localStorage.getItem("theme");
+
+    // If user already manually selected a theme
+    if (savedTheme) {
+      if (savedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    }
+
+    // Otherwise use system preference
+    else {
+      const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+
+      if (prefersLight) {
+        document.body.classList.add("light");
+      }
+    }
+  });
+
+  // Toggle button
   function toggleTheme() {
     document.body.classList.toggle("light");
+
+    // Save preference
+    if (document.body.classList.contains("light")) {
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
+    }
   }
 </script>
 
-<body class="light">
+<body>
     <button class="theme-toggle" onclick="toggleTheme()">Toggle theme</button>
   <section class="panel">
     <div class="date-row">
       <h1>SpiderHouse :: Dashboard</h1>
-      <!-- <span class="badge">4</span> -->
     </div>
 
     <div class="card-list">
@@ -35,20 +64,20 @@
     </div>
 
     <div class="card-list">
-      <div class="rank-card">
+      <a class="rank-card" href="dn1.html">
         <p class="meta">HTML | CSS | JS</p>
         <h2 class="title">DN1 Gourmet Catering</h2>
-      </div>
-      <div class="rank-card">
+      </a>
+
+      <a class="rank-card" href="starling-aesthetics.html">
         <p class="meta">HTML | CSS | JS</p>
         <h2 class="title">Starling Aesthetics</h2>
-      </div>
-      <div class="rank-card">
+      </a>
+
+      <a class="rank-card" href="dashboard.html">
         <p class="meta">HTML | CSS | JS</p>
         <h2 class="title">Spider House Dashboard</h2>
-      </div>
-
-      </div>
+      </a>
     </div>
   </section>
 </body>
