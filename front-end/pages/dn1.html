@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ranked Cards</title>
-  <link rel="stylesheet" type="text/css" href="front-end/styles/mobile.css">
+  <title>SpiderHouse :: DN1</title>
+  <link rel="stylesheet" type="text/css" href="../styles/mobile.css">
+  <script src="../scripts/url_checker.js"></script>
 </head>
 
 <body>
@@ -15,13 +16,24 @@
     <div class="left-column">
       <section class="panel">
         <div class="date-row">
-          <h1>SpiderHouse :: Dashboard</h1>
+          <h1>Overview :: <span class="highlight">DN1 Gourmet Catering</span></h1>
         </div>
 
         <div class="card-list">
-          <div class="rank-card">
-            <p class="meta">Info</p>
-            <h2 class="title">25 Projects | 4 Domains</h2>
+          <a class="rank-card" id="dn1-card" href="https://dn1gourmetcatering.com/" target="_blank">
+            <p class="meta">Hosted at: </p>
+            <h2 class="title">https://dn1gourmetcatering.com/</h2>
+          </a>
+          <div class="button-row">
+            
+            <div class="status-btn" href="https://dn1gourmetcatering.com/" target="_blank">
+                Status : Online
+            </div>
+
+            <a class="diag-btn" href="https://dn1gourmetcatering.com/" target="_blank">
+                Run Diagnostic
+            </a>
+
           </div>
         </div>
       </section>
@@ -73,19 +85,19 @@
 
     <aside class="panel-side">
       <div class="date-row">
-        <h1>Project List</h1>
+        <h1>Summary</h1>
       </div>
 
       <div class="card-list">
-        <a class="rank-card" href="front-end/pages/dn1.html">
+        <div class="rank-card-info-box">
           <p class="meta">HTML | CSS | JS</p>
           <h2 class="title">DN1 Gourmet Catering</h2>
-        </a>
+        </div>
 
-        <a class="rank-card" href="starling-aesthetics.html">
+        <div class="rank-card-info-box">
           <p class="meta">HTML | CSS | JS</p>
           <h2 class="title">Starling Aesthetics</h2>
-        </a>
+        </div>
 
         <a class="rank-card" href="dashboard.html">
           <p class="meta">HTML | CSS | JS</p>
@@ -113,6 +125,8 @@
       }
     });
 
+    
+
     function toggleTheme() {
       document.body.classList.toggle("light");
 
@@ -122,6 +136,9 @@
         localStorage.setItem("theme", "dark");
       }
     }
+    setInterval(() => {
+    check_status('https://dn1gourmetcatering.com');
+    }, 10000);
   </script>
 </body>
 </html>
