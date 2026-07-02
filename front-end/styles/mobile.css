@@ -250,8 +250,8 @@ body {
 }
 
 .status-btn{
-  background: var(--accent-green);
-  border-color: var(--accent-green);
+  background: var(--accent-red);
+  border-color: var(--accent-red);
 }
 
 .diag-btn{
