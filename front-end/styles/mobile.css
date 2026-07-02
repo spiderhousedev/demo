@@ -277,6 +277,9 @@ body {
   
 }
 
+p.meta {
+  padding-top:10px;
+}
 
 @media (max-width: 720px) {
   body {
