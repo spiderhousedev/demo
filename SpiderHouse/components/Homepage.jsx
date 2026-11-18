@@ -157,13 +157,47 @@ export default function Homepage() {
           {sent ? (
             <div className="ok" role="status">Thanks — your enquiry has been sent. We’ll reply within one working day.</div>
           ) : (
-            <form name="website-enquiry" method="POST" data-netlify="true" onSubmit={submit}>
+            
+            <form
+              name="website-enquiry"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+            >
               <input type="hidden" name="form-name" value="website-enquiry" />
-              <label className="field">Your name<input name="name" required autoComplete="name" /></label>
-              <label className="field">Email<input name="email" type="email" required autoComplete="email" /></label>
-              <label className="field">What do you need?<textarea name="message" rows="4" required /></label>
-              <button type="submit" className="btn solid">Send message</button>
+                      
+              <p hidden>
+                <label>
+                  Don't fill this out:
+                  <input name="bot-field" />
+                </label>
+              </p>
+                      
+              <label className="field">
+                Your name
+                <input name="name" required autoComplete="name" />
+              </label>
+                      
+              <label className="field">
+                Email
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                />
+              </label>
+                      
+              <label className="field">
+                What do you need?
+                <textarea name="message" rows="4" required />
+              </label>
+                      
+              <button type="submit" className="btn solid">
+                Send message
+              </button>
             </form>
+
           )}
         </div>
       </section>
