@@ -6,12 +6,9 @@ import "./Homepage.css";
    Put logo.png in your /public folder (used in the footer). */
 
 /* Small house-and-web mark for the nav */
-function Mark({ size = 36 }) {
+function Mark({ size = 50 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" stroke="#fcf8f1" strokeWidth="2.4" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 19 20 5l15 14v16H5z" />
-      <path d="M20 14v21M12 22l16 13M28 22 12 35M10 28h20" stroke="#ffc347" strokeWidth="1.6" />
-    </svg>
+    <img src="/spiderhouse_homeonly.jpg" alt="Spider House Solutions" width={size} height={size} />
   );
 }
 
@@ -77,17 +74,29 @@ const steps = [
 export default function Homepage() {
   const [sent, setSent] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    // TODO: send the form data to your backend or email service
-    setSent(true);
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!response.ok) throw new Error("Unable to submit form");
+      setSent(true);
+    } catch (error) {
+      alert("Sorry, there was a problem sending your enquiry. Please try again.");
+    }
   };
 
   return (
     <div className="sh">
       <div className="wrap">
         <nav className="nav" aria-label="Main">
-          <a href="#top" className="brand"><Mark /> SPIDER HOUSE</a>
+          <a href="#top" className="brand"><Mark /> Spider House</a>
           <ul>
             <li><a href="#services">Services</a></li>
             <li><a href="#process">How we work</a></li>
@@ -146,9 +155,10 @@ export default function Homepage() {
             <p className="lead">Share a few details and we’ll reply within one working day with next steps and a rough price.</p>
           </div>
           {sent ? (
-            <div className="ok" role="status">Thanks, your message is on its way. We’ll reply within one working day.</div>
+            <div className="ok" role="status">Thanks — your enquiry has been sent. We’ll reply within one working day.</div>
           ) : (
-            <form onSubmit={submit}>
+            <form name="website-enquiry" method="POST" data-netlify="true" onSubmit={submit}>
+              <input type="hidden" name="form-name" value="website-enquiry" />
               <label className="field">Your name<input name="name" required autoComplete="name" /></label>
               <label className="field">Email<input name="email" type="email" required autoComplete="email" /></label>
               <label className="field">What do you need?<textarea name="message" rows="4" required /></label>
